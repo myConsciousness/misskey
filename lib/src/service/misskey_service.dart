@@ -2,7 +2,8 @@
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided the conditions.
 
-import '../core/client/client_context.dart';
+// 🌎 Project imports:
+import '../core/client/client.dart';
 import '../core/config/retry_config.dart';
 import 'accounts/accounts_service.dart';
 
@@ -34,7 +35,7 @@ class _MisskeyService implements MisskeyService {
     RetryConfig? retryConfig,
   }) : accounts = AccountsService(
           instance: instance,
-          context: ClientContext(
+          client: Client(
             accessToken: accessToken,
             timeout: timeout,
             retryConfig: retryConfig,

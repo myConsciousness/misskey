@@ -10,7 +10,6 @@ export 'package:misskey/src/core/exception/rate_limit_exceeded_exception.dart';
 export 'package:misskey/src/core/exception/unauthorized_exception.dart';
 export 'package:misskey/src/core/http_method.dart';
 export 'package:misskey/src/core/http_status.dart';
-export 'package:misskey/src/core/scope.dart';
 export 'package:misskey/src/misskey_api.dart';
 export 'package:misskey/src/service/accounts/account.dart';
 export 'package:misskey/src/service/accounts/accounts_service.dart';

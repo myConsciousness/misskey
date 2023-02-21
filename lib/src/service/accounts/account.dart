@@ -15,6 +15,24 @@ class Account with _$Account {
   @JsonSerializable(includeIfNull: false)
   const factory Account({
     required String id,
+    required String name,
+    required String username,
+    required String description,
+    required String avatarUrl,
+    required String avatarId,
+    required int notesCount,
+    required int followersCount,
+    required int followingCount,
+    required bool isBot,
+    required bool isCat,
+    required bool isSuspended,
+    required bool isLocked,
+    required bool isSilenced,
+    required bool isModerator,
+    required bool isAdmin,
+    required bool isDeleted,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _Account;
 
   factory Account.fromJson(Map<String, Object?> json) =>

@@ -8,7 +8,6 @@ targets:
           any_map: true
           checked: true
           create_to_json: true
-          field_rename: snake
           explicit_to_json: true
 
       # The end-user of a builder which applies "source_gen|combining_builder"
