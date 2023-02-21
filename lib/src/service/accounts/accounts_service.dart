@@ -19,6 +19,15 @@ abstract class AccountsService {
         client: client,
       );
 
+  /// Lookup authenticated user.
+  ///
+  /// ## Endpoint Url
+  ///
+  /// - POST /api/i
+  ///
+  /// ## Reference
+  ///
+  /// - https://misskey-hub.net/docs/api/endpoints/i.html
   Future<MisskeyResponse<Account>> lookupMe();
 }
 
