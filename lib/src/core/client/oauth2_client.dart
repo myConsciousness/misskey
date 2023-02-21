@@ -1,4 +1,4 @@
-// Copyright 2022 Kato Shinya. All rights reserved.
+// Copyright 2023 Kato Shinya. All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided the conditions.
 
@@ -13,11 +13,11 @@ import 'client.dart';
 
 class OAuth2Client extends Client {
   /// Returns the new instance of [OAuth2Client].
-  const OAuth2Client({required String bearerToken})
-      : _bearerToken = bearerToken;
+  const OAuth2Client({required String accessToken})
+      : _accessToken = accessToken;
 
   /// The token to authenticate OAuth 2.0
-  final String _bearerToken;
+  final String _accessToken;
 
   @override
   Future<http.Response> get(
@@ -28,7 +28,7 @@ class OAuth2Client extends Client {
       await http
           .get(
             uri,
-            headers: {'Authorization': 'Bearer $_bearerToken'}..addAll(headers),
+            headers: {'Authorization': 'Bearer $_accessToken'}..addAll(headers),
           )
           .timeout(timeout);
 
@@ -39,7 +39,7 @@ class OAuth2Client extends Client {
     required Duration timeout,
   }) async {
     request.headers.addAll(
-      {'Authorization': 'Bearer $_bearerToken', ...headers},
+      {'Authorization': 'Bearer $_accessToken', ...headers},
     );
 
     return request.send().timeout(timeout);
@@ -55,7 +55,7 @@ class OAuth2Client extends Client {
       await http
           .post(
             uri,
-            headers: {'Authorization': 'Bearer $_bearerToken'}..addAll(headers),
+            headers: {'Authorization': 'Bearer $_accessToken'}..addAll(headers),
             body: body,
             encoding: utf8,
           )
@@ -70,7 +70,7 @@ class OAuth2Client extends Client {
   }) async {
     request.files.addAll(files);
     request.fields.addAll(body);
-    request.headers.addAll({'Authorization': 'Bearer $_bearerToken'});
+    request.headers.addAll({'Authorization': 'Bearer $_accessToken'});
 
     return http.Response.fromStream(await request.send())
         .timeout(timeout)
@@ -93,7 +93,7 @@ class OAuth2Client extends Client {
       await http
           .delete(
             uri,
-            headers: {'Authorization': 'Bearer $_bearerToken'}..addAll(headers),
+            headers: {'Authorization': 'Bearer $_accessToken'}..addAll(headers),
             body: body,
             encoding: utf8,
           )
@@ -109,7 +109,7 @@ class OAuth2Client extends Client {
       await http
           .put(
             uri,
-            headers: {'Authorization': 'Bearer $_bearerToken'}..addAll(headers),
+            headers: {'Authorization': 'Bearer $_accessToken'}..addAll(headers),
             body: body,
             encoding: utf8,
           )
@@ -125,7 +125,7 @@ class OAuth2Client extends Client {
       await http
           .patch(
             uri,
-            headers: {'Authorization': 'Bearer $_bearerToken'}..addAll(headers),
+            headers: {'Authorization': 'Bearer $_accessToken'}..addAll(headers),
             body: body,
             encoding: utf8,
           )

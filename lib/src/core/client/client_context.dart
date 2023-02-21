@@ -1,4 +1,4 @@
-// Copyright 2022 Kato Shinya. All rights reserved.
+// Copyright 2023 Kato Shinya. All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided the conditions.
 
@@ -22,12 +22,12 @@ import 'user_context.dart';
 abstract class ClientContext {
   /// Returns the new instance of [ClientContext].
   factory ClientContext({
-    required String bearerToken,
+    required String accessToken,
     required Duration timeout,
     RetryConfig? retryConfig,
   }) =>
       _ClientContext(
-        bearerToken: bearerToken,
+        accessToken: accessToken,
         timeout: timeout,
         retryConfig: retryConfig,
       );
@@ -94,13 +94,13 @@ abstract class ClientContext {
 
 class _ClientContext implements ClientContext {
   _ClientContext({
-    required String bearerToken,
+    required String accessToken,
     required this.timeout,
     RetryConfig? retryConfig,
   })  : _clientResolver = ClientResolver(
           AnonymousClient(),
-          bearerToken.isNotEmpty
-              ? OAuth2Client(bearerToken: bearerToken)
+          accessToken.isNotEmpty
+              ? OAuth2Client(accessToken: accessToken)
               : null,
         ),
         _retryPolicy = RetryPolicy(retryConfig);

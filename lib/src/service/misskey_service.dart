@@ -2,20 +2,19 @@
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided the conditions.
 
-// 🌎 Project imports:
-import 'core/config/retry_config.dart';
-import 'service/accounts/accounts_service.dart';
-import 'service/misskey_service.dart';
+import '../core/client/client_context.dart';
+import '../core/config/retry_config.dart';
+import 'accounts/accounts_service.dart';
 
-abstract class MisskeyApi {
-  /// Returns the new instance of [MisskeyApi].
-  factory MisskeyApi({
+abstract class MisskeyService {
+  /// Returns the new instance of [MisskeyService].
+  factory MisskeyService({
     required String instance,
     required String accessToken,
     Duration timeout = const Duration(seconds: 10),
     RetryConfig? retryConfig,
   }) =>
-      _MisskeyApi(
+      _MisskeyService(
         instance: instance,
         accessToken: accessToken,
         timeout: timeout,
@@ -26,22 +25,22 @@ abstract class MisskeyApi {
   AccountsService get accounts;
 }
 
-class _MisskeyApi implements MisskeyApi {
-  /// Returns the new instance of [_MisskeyApi].
-  _MisskeyApi({
+class _MisskeyService implements MisskeyService {
+  /// Returns the new instance of [_MisskeyService].
+  _MisskeyService({
     required String instance,
     required String accessToken,
     required Duration timeout,
     RetryConfig? retryConfig,
-  }) : _service = MisskeyService(
+  }) : accounts = AccountsService(
           instance: instance,
-          accessToken: accessToken,
-          timeout: timeout,
-          retryConfig: retryConfig,
+          context: ClientContext(
+            accessToken: accessToken,
+            timeout: timeout,
+            retryConfig: retryConfig,
+          ),
         );
 
-  final MisskeyService _service;
-
   @override
-  AccountsService get accounts => _service.accounts;
+  final AccountsService accounts;
 }
