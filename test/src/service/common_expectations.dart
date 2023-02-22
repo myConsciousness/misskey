@@ -10,7 +10,7 @@ import 'package:misskey/src/core/exception/unauthorized_exception.dart';
 // 📦 Package imports:
 import 'package:test/test.dart';
 
-void expectMastodonException(Function fn) {
+void expectMisskeyException(Function fn) {
   expect(
     () async => await fn.call(),
     throwsA(
