@@ -3,20 +3,9 @@
 // modification, are permitted provided the conditions.
 
 enum HttpMethod {
-  /// `GET`
-  get('GET'),
-
   /// `POST`
   post('POST'),
-
-  /// `DELETE`
-  delete('DELETE'),
-
-  /// `PUT`
-  put('PUT'),
-
-  /// `PATCH`
-  patch('PATCH');
+  ;
 
   /// The value.
   final String value;

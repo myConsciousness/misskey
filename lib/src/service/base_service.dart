@@ -117,7 +117,6 @@ abstract class BaseService implements _Service {
   http.Response checkResponse(
     final http.Response response,
   ) {
-    print(response.headers);
     if (HttpStatus.noContent.equalsByCode(response.statusCode)) {
       return response;
     }

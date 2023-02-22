@@ -4,7 +4,6 @@
 
 // 🌎 Project imports:
 import 'package:misskey/src/core/client/client.dart';
-
 // 📦 Package imports:
 import 'package:mockito/annotations.dart';
 

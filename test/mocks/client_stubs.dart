@@ -9,13 +9,13 @@ import 'dart:io';
 import 'package:http/http.dart';
 import 'package:mockito/mockito.dart';
 
+// 🌎 Project imports:
 import 'mock.mocks.dart';
 
 MockClient buildPostStub(
   final String instance,
   final String unencodedPath,
   final String resourcePath, {
-  required dynamic body,
   int statusCode = 200,
 }) {
   final mockClient = MockClient();
@@ -24,7 +24,7 @@ MockClient buildPostStub(
   when(mockClient.post(
     requestUri,
     headers: anyNamed('headers'),
-    body: body,
+    body: anyNamed('body'),
   )).thenAnswer(
     (_) async => Response(
       await File(resourcePath).readAsString(),
