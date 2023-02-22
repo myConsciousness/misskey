@@ -28,6 +28,10 @@ Future<void> main() async {
     final me = await misskey.accounts.lookupMe();
 
     print(me);
+  } on UnauthorizedException catch (e) {
+    print(e);
+  } on RateLimitExceededException catch (e) {
+    print(e);
   } on MisskeyException catch (e) {
     print(e);
   }
