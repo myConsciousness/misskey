@@ -1,5 +1,5 @@
 name: misskey
-description: A starting point for Dart libraries or applications.
+description: This library provides the easiest and powerful Dart/Flutter library for Misskey API.
 version: 0.0.1
 repository: https://github.com/myConsciousness/misskey
 issue_tracker: https://github.com/myConsciousness/misskey/issues
